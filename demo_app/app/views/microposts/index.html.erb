@@ -1,0 +1,29 @@
+<h1>微博列表</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>微博内容</th>
+      <th>博主</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @microposts.each do |micropost| %>
+      <tr>
+        <td><%= micropost.content %></td>
+        <td><%= micropost.user_id %></td>
+        <td><%= link_to '显示', micropost %></td>
+        <td><%= link_to '编辑', edit_micropost_path(micropost) %></td>
+        <td><%= link_to '删除', micropost, method: :delete, data: { confirm: '您确认删除此微博吗？' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '新发微博', new_micropost_path %>

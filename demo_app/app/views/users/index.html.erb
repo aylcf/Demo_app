@@ -1,0 +1,29 @@
+<h1>用户列表</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>用户名</th>
+      <th>电子邮件</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= link_to '显示', user %></td>
+        <td><%= link_to '编辑', edit_user_path(user) %></td>
+        <td><%= link_to '删除', user, method: :delete, data: { confirm: '您确定要删除此用户吗？' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '新增用户', new_user_path %>
